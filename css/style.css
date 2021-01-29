@@ -1,0 +1,12 @@
+*{
+    margin: 0px;
+    padding: 0px;
+}
+
+#general{
+    margin: auto;
+    margin-top:50px;
+    width:960; 
+    height: 800;
+    background: red !important ;
+}
