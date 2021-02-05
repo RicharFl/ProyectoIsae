@@ -1,13 +1,44 @@
 <?php 
 
-
- require 'Conexion.php';
+require 'Conexion.php';
 
  require '../lib/PHPExcel-1.8/Classes/PHPExcel/IOFactory.php';
 
- $directorio='../files/ArchiCoord/nom.xlsx'; //directorio con el nombre del archivo 
+	
 
+//print_r($_FILES); //me da los datos de la estructura del Array.
 
+$nameFiles=$_FILES['ArchivoExcelCoor']['name'];
+$Save=$_FILES['ArchivoExcelCoor']['tmp_name'];
+
+$save_new='../files/ArchiCoord';
+if (!file_exists($save_new))
+{
+mkdir($save_new,0777,true); // crera las carpetas si no existen 
+
+    if  (!file_exists($save_new))
+        {
+            if (move_uploaded_file($Save,$save_new.'/'.$nameFiles))
+                {
+                     echo "Archivo Subido con exito";
+            }else {
+                    echo "Error al subir el Archivo";
+                }
+
+        }   
+}else { 
+if (move_uploaded_file($Save,$save_new.'/'.$nameFiles))
+                {
+                    echo "Archivo Subido con exito";
+                    '<br>';
+                     $validar=1;
+                     //var_dump ($validar);
+            }else {
+                    echo "Error al subir el Archivo";
+                }
+}
+
+$directorio= $save_new.'/'.$nameFiles ; //directorio con el nombre del archivo 
 
 	// Cargo la hoja de cálculo
 	$objPHPExcel  = PHPExcel_IOFactory :: load($directorio);
@@ -16,8 +47,8 @@
 	$objPHPExcel->setActiveSheetIndex(0);
 	//Obtengo el numero de filas del archivo
 	$numRows = $objPHPExcel->setActiveSheetIndex(0)->getHighestRow();
-	//echo $numRows;
-	/*echo '<table 
+	echo $numRows;
+	echo '<table 
 	border=1><tr>
 		<td>num</td>
 		<td>CORRDINADOR</td>
@@ -57,19 +88,12 @@
 		<td>Estado SLM en tiempo real</td>
 		<td>TABLA </td>
 
-	</tr>';*/
-	$i=2;
-	'<br>';
-	//for ($i =2 ; $i <= $numRows; $i ++)
-	//{
-
-		$A=$objPHPExcel->getActiveSheet()->getCell('A'.$i)->getCalculatedValue(); //Coordinador
-
-		$queryA="SELECT IDCoordinador FROM Coordinadores where Coordinadores.Nombre LIKE '%".$A."%'";
-             $resultado1=(mysqli_query($conexion,$queryA));
-			 $fin=mysqli_fetch_array($resultado1);
-			 echo $fin ['IDCoordinador'];
-		
+	</tr>';
+	
+	for ($i =2 ; $i <= $numRows; $i ++)
+	{
+        $A=$objPHPExcel->getActiveSheet()->getCell('A'.$i)->getCalculatedValue();
+        
 		$B=$objPHPExcel->getActiveSheet()->getCell('B'.$i)->getCalculatedValue();
 		$C=$objPHPExcel->getActiveSheet()->getCell('C'.$i)->getCalculatedValue();
 		$D=$objPHPExcel->getActiveSheet()->getCell('D'.$i)->getCalculatedValue();
@@ -105,7 +129,7 @@
 		$AH=$objPHPExcel->getActiveSheet()->getCell('AH'.$i)->getCalculatedValue();
 		$AI=$objPHPExcel->getActiveSheet()->getCell('AI'.$i)->getCalculatedValue();
 		$AJ=$objPHPExcel->getActiveSheet()->getCell('AJ'.$i)->getCalculatedValue();
-	/*	
+		
 echo '<tr>';
 echo '<td>'.$i.'</td>';
 echo '<td>'.$A.'</td>';
@@ -147,12 +171,25 @@ echo '<td>'.$AJ.'</td>';
 
 
 
-echo '</tr>';*/
-	//}
+echo '</tr>';
+	}
 
-	//echo '</table>'
-	
+	echo '</table>'
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 ?>
-
-
-
