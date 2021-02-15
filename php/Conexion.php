@@ -1,5 +1,5 @@
 <?php
-
+//PDO PHP. CLASS 
 //123456 : pswd
 $conexion=mysqli_connect("localhost","root","123456","Proyecto_Isae_Tikets");
 

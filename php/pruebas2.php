@@ -1,15 +1,20 @@
 <?php
-include 'Conexion.php';
+
+include 'DataBase.php';
 
 
-$nameCoord='J';
+$nameCoord='mex';
 //echo $nameCoord;
 
+$QUERY="SELECT Nombre FROM Coordinadores
+ where Coordinadores.Nombre LIKE '%".$nameCoord."%'";
+ //ECHO $QUERY;
+$NameCoordinador= new DataBase($QUERY);
+$nameres=$NameCoordinador-> CrearQuery ($QUERY);
+echo $nameres;
 
 
-
-
-
+/*
 
 $total = mysqli_num_rows(mysqli_query($conexion,"SELECT Nombre FROM Coordinadores
  where Coordinadores.Nombre LIKE '%".$nameCoord."%'")); //Comprobar si ya está registrado el usuario
@@ -22,7 +27,7 @@ $sql="SELECT Nombre FROM Coordinadores where Coordinadores.Nombre LIKE '%".$name
 
  $fin=mysqli_fetch_array($resultado1);
 echo $fin ['Nombre'] ;
-/*
+
 
         
             

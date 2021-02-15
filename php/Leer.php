@@ -71,8 +71,11 @@
 			 echo $fin ['IDCoordinador'];
 		
 		$B=$objPHPExcel->getActiveSheet()->getCell('B'.$i)->getCalculatedValue();
+
 		$C=$objPHPExcel->getActiveSheet()->getCell('C'.$i)->getCalculatedValue();
+
 		$D=$objPHPExcel->getActiveSheet()->getCell('D'.$i)->getCalculatedValue();
+		
 		$E=$objPHPExcel->getActiveSheet()->getCell('E'.$i)->getCalculatedValue();
 		$F=$objPHPExcel->getActiveSheet()->getCell('F'.$i)->getCalculatedValue();
 		$G=$objPHPExcel->getActiveSheet()->getCell('G'.$i)->getCalculatedValue();
