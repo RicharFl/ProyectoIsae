@@ -2,7 +2,8 @@
 
 
  require 'Conexion.php';
-
+ include 'GeneraArray.php';
+ include 'DataBase.php';
  require '../lib/PHPExcel-1.8/Classes/PHPExcel/IOFactory.php';
 
  $directorio='../files/ArchiCoord/nom.xlsx'; //directorio con el nombre del archivo 
@@ -16,7 +17,14 @@
 	$objPHPExcel->setActiveSheetIndex(0);
 	//Obtengo el numero de filas del archivo
 	$numRows = $objPHPExcel->setActiveSheetIndex(0)->getHighestRow();
-	//echo $numRows;
+	$LetColum = $objPHPExcel->setActiveSheetIndex(0)->getHighestColumn();
+	
+//	echo $numCols;
+//	echo $numRows;
+	$Valo=new GeneraArray ($LetColum); //Saber el numero de comulnas del excel 
+	$numCols=$Valo ->Num_Colum($LetColum);
+	//var_dump ($NumColumnas);
+
 	/*echo '<table 
 	border=1><tr>
 		<td>num</td>
@@ -58,17 +66,26 @@
 		<td>TABLA </td>
 
 	</tr>';*/
+	$Query_Con= new DataBase('Inicio');
+//$nameres=$Query_Con-> CrearQuery ($QUERY);
 	$i=2;
 	'<br>';
 	//for ($i =2 ; $i <= $numRows; $i ++)
 	//{
 
 		$A=$objPHPExcel->getActiveSheet()->getCell('A'.$i)->getCalculatedValue(); //Coordinador
-
+		$A=str_split($A,3);
+		$A=$A[0];
+		
+		//var_dump ($A);
 		$queryA="SELECT IDCoordinador FROM Coordinadores where Coordinadores.Nombre LIKE '%".$A."%'";
              $resultado1=(mysqli_query($conexion,$queryA));
 			 $fin=mysqli_fetch_array($resultado1);
-			 echo $fin ['IDCoordinador'];
+			
+			$nameres=$Query_Con-> CrearQuery ($queryA);
+			//var_dump ($nameres);
+			echo $nameres ['IDCoordinador'];
+			echo $fin ['IDCoordinador'];
 		
 		$B=$objPHPExcel->getActiveSheet()->getCell('B'.$i)->getCalculatedValue();
 

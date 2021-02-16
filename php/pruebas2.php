@@ -1,14 +1,21 @@
 <?php
 
 include 'DataBase.php';
+include 'Conexion.php';
 
-
-$nameCoord='mex';
+$nameCoord='JU';
 //echo $nameCoord;
 
 $QUERY="SELECT Nombre FROM Coordinadores
  where Coordinadores.Nombre LIKE '%".$nameCoord."%'";
- //ECHO $QUERY;
+ 
+ /*
+ $resultado1=(mysqli_query($conexion,$QUERY));
+ $fin=mysqli_fetch_array($resultado1);
+ echo $fin [0];
+ 
+ECHO $QUERY;*/
+
 $NameCoordinador= new DataBase($QUERY);
 $nameres=$NameCoordinador-> CrearQuery ($QUERY);
 echo $nameres;
