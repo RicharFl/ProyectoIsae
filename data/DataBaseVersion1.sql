@@ -26,7 +26,7 @@ create table Pagos(
 DROP TABLE IF EXISTS  SegPorClien;
 create table SegPorClien(
 		IDSeClien int AUTO_INCREMENT ,
-		DescPagos varchar(2) not null,
+		DescSegClient varchar(2) not null,
 		primary key(IDSeClien)
         );
  DROP TABLE IF EXISTS  CorteMes;       
@@ -79,7 +79,7 @@ create table UltModificador(
          DROP TABLE IF EXISTS  GrupoAsig;    
 create table GrupoAsig(
 		IDGrupoAsig int AUTO_INCREMENT ,
-		NombreGrup varchar(25) not null,
+		NombreGrup varchar(35) not null,
 		primary key(IDGrupoAsig)	
         );
 DROP TABLE IF EXISTS  EstadoLMS;    
@@ -152,27 +152,221 @@ create table EstadoLMS(
         );
         
         
-        insert into Coordinadores (Nombre,tel) values 
+insert into Coordinadores (Nombre,tel) values 
         ("JUAN","5519531429"),
         ("ALEJANDRA","5516542549"),
-        ("ALDAHIR","5519364581");
+        ("ALDAHIR","5519364581"),
+        ("CARMEN","5519364581");
         
         
    insert into ZonaEstados (Nombre) values 
-        ("CENTRO"),
         ("NORTE"),
-        ("SUR"),
-        ("METRO");
+        ("CENTRO"),
+        ("METRO"),
+        ("SUR");
         
-          insert into EstadosRepu (NombreEstado,IDZonEstaEs) values 
-       
-        
-        EstadosRepu
-    
-    
-    
+insert into EstadosRepu (NombreEstado,IDZonEstaEs) values 
+("Aguascalientes",2),
+("Baja California",1),
+("Baja California Sur",1),
+("Campeche",4),
+("Coahuila",1),
+("Colima",2),
+("Chiapas",4),
+("Chihuahua",1),
+("Distrito Federal",3),
+("Durango",1),
+("Guanajuato",2),
+("Guerrero",2),
+("Hidalgo",3),
+("Jalisco",2),
+("Mexico",3),
+("Michoacan",2),
+("Morelos",3),
+("Nayarit",2),
+("Nuevo Leon",1),
+("Oaxaca",2),
+("Puebla",3),
+("Querétaro",3),
+("Quintana Roo",4),
+("San Luis Potosí",1),
+("Sinaloa",1),
+("Sonora",1),
+("Tabasco",4),
+("Tamaulipas",1),
+("Tlaxcala",3),
+("Veracruz",2),
+("Yucatan",4),
+("Zacatecas",1),
+("CDMX",3),
+("Estado de Mexico",3);
+
+insert into EstadoLMS(DesEstLMS) values 
+("Advertencia de objetivo de servicio"),
+("Dentro del Objetivo de servicio"),
+("Objetivos de servicio incumplidos"),
+("");
+
+insert into CorteMes(Mes) values 
+("ENERO"),
+("FEBRERO"),
+("MARZO"),
+("ABRIL"),
+("MAYO"),
+("JUNIO"),
+("JULIO"),
+("AGOSTO"),
+("SEPTIEMBRE"),
+("OCTUBRE"),
+("NOVIEMBRE"),
+("DICIEMBRE");
+
+insert into Cuenta (NombreCuenta)  Values 
+("DICONSA"),
+("PROSPERA"),
+("FOVISSSTE COMPUTO"),
+("SEDESOL"),
+("");
+
+insert into SegPorClien (DescSegClient) values 
+("-"),
+("SI")
+;
+ insert into Categoria (Tipo) values 
+ ("DIA A DIA"),
+ ("BACKLOG"),
+ ("RECUPERACION DE DOCUMENTACION ");
+ 
+ insert into GrupoAsig (NombreGrup) values 
+ ("Almacen"),
+ ("Garantias"),
+ ("Giovanni Álvarez Ríos."),
+ ("Mesa de Servicio"),
+ ("Soporte Aguascalientes"),
+ ("Soporte Baja California"),
+ ("Soporte Baja California Sur"),
+ ("Soporte Campeche"),
+ ("Soporte Chiapas Tuxtla"),
+ ("Soporte Chihuahua"),
+ ("Soporte Coahuila, Saltillo"),
+ ("Soporte Coahuila, Torreón"),
+ ("Soporte Colima"),
+ ("Soporte DICONSA"),
+ ("Soporte Durango"),
+ ("Soporte Estado De Mexico Poniente"),
+ ("Soporte FONART"),
+ ("Soporte FOVISSSTE"),
+ ("Soporte Guanajuato"),
+ ("Soporte Guerrero"),
+ ("Soporte Hidalgo"),
+ ("Soporte Jalisco"),
+ ("Soporte Michoacan"),
+ ("Soporte Morelos"),
+ ("Soporte Nayarit"),
+ ("Soporte Nuevo Leon"),
+ ("Soporte Oaxaca"),
+ ("Soporte PROSPERA"),
+ ("Soporte Puebla"),
+ ("Soporte Queretaro"),
+ ("Soporte Quintana Roo"),
+ ("Soporte San Luis Potosí"),
+ ("Soporte SEDESOL"),
+ ("Soporte Sinaloa"),
+ ("Soporte Sonora"),
+ ("Soporte Tabasco"),
+ ("Soporte Tamaulipas"),
+ ("Soporte Tlaxcala"),
+ ("Soporte Veracruz"),
+ ("Soporte Yucatan"),
+ ("Soporte Zacatecas"),
+ ("");
+ 
+ 
+
+ insert into UltModificador (NombreMod) values 
+("alex.rodriguez"),
+("yanira.mayen"),
+("clemente.bautista"),
+("luis.perez"),
+("kevin.jimenez"),
+("maria.nahuatlato"),
+("giovanni.alvarez"),
+("carina.flores"),
+("AR_ESCALATOR"),
+("luis.vera"),
+("sharon.mendez"),
+("mayra.ocampo"),
+("jesus.guapo"),
+("gabriel.sol"),
+("ricardo.marin"),
+("edgar.jesus"),
+("alejandra.paredes"),
+("juan.zaldivar"),
+("daniel.ocampo"),
+("aldo.zarraga"),
+("alfonso.garcia"),
+("kelly.nabor"),
+("blanca.guzman"),
+("stephanie.zarraga"),
+("alexis.rivera"),
+("abraham.sanchez"),
+("oscar.gonzalez");
+
+insert into TypeTiket(TypeTikets)   values 
+("Incidencia"),
+("Jesus Antonio"),
+("");
+
+insert into Pagos(DescPagos)   values 
+("-"),
+("PAGADO"),
+("");
+
+
+INSERT INTO StatusTiket (TipoStatus) values 
+("CERRADO"),
+("RESUELTO"),
+("CANCELADO "),
+("COMPRAS"),
+("GARANTIAS"),
+("PENDIENTE"),
+("ASIGNADO"),
+("EN CURSO"),
+("ALMACEN");
+
+insert into Tabla (DesTabla) VALUES 
+("RESOLUCION"),
+("ALMACEN"),
+("PROGRAMACION");
+
+ 
+ 
+ 
         SELECT *FROM Coordinadores;
-         SELECT *FROM ZonaEstados;
+		SELECT *FROM ZonaEstados;
+        select *From EstadosRepu;
+		select *From EstadoLMS;
+        select *from CorteMes;
+        select *From Cuenta;
+        select *from SegPorClien;
+        select *from Categoria;
+		SELECT *from GrupoAsig;
+        select *from UltModificador;
+        select *From TypeTiket;
+        select *from pagos;
+        SELECT *FROM StatusTiket;
+		select *from Tabla;
         
+	SELECT *from BaseGeneral;
+    select * from Categoria  ;
+select IDCategoria from Categoria where Tipo like "%BACLOG%";
+select  IDPagos from Pagos where DescPagos LIKE "%PA%" ;
+select * from Categoria where Tipo like "%BACKLOG%";
+select IDSeClien from SegPorClien where DescSegClient like "%S%";
+select IDUltMod from UltModificador where NombreMod like "%Bla%";
+ SELECT IDStatusTiket FROM StatusTiket where TipoStatus like "%CERR%";
+   
+
+Select *from Coordinadores;
 
 

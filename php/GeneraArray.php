@@ -11,8 +11,8 @@ class GeneraArray
         $ABC='ABCDEFGHIJKLMNOPQRSTUVWXYZ';
         $ABTAM=strlen ($ABC);
         $Dat_size=strlen($Dato);
-        echo $Dato;
-        echo $Dat_size;
+       // echo $Dato;
+        //echo $Dat_size;
         $asi="AA";
         $res=0;
 
