@@ -5,11 +5,16 @@ include 'Conexion.php';
 
 $nameCoord='J';
 //echo $nameCoord;
+$valor_a_buscar='Soporte ';
+$valor_de_reemplazo ='';
+$string='Soporte PROSPERA';
 
-
-
-
-
+$Numevo=str_replace ( $valor_a_buscar , $valor_de_reemplazo , $string  );
+var_dump ($Numevo);
+$mes=date("m");
+$mes=(int ) $mes;
+var_dump ($mes);
+/*
 
 
 $total = mysqli_num_rows(mysqli_query($conexion,"SELECT Nombre FROM Coordinadores
@@ -22,7 +27,7 @@ $sql="SELECT Nombre FROM Coordinadores where Coordinadores.Nombre LIKE '%".$name
  $resultado1=(mysqli_query($conexion,$sql));
 
  $fin=mysqli_fetch_array($resultado1);
-echo $fin ['Nombre'] ;
+echo $fin ['Nombre'] ;*/
 /*
 
         

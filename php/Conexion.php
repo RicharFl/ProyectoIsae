@@ -11,7 +11,7 @@ if(!$conexion)
 }
 else {
     
-  //ECHO 'CORRECTA CONEXION';
+//  ECHO 'CORRECTA CONEXION';
 }
 
 ?>

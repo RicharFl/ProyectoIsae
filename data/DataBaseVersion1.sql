@@ -109,11 +109,11 @@ create table EstadoLMS(
 		IDStatusTiketBG int ,
 		Comentarios varchar (255),
 		Detalles varchar (90),
-        SoliComponente varchar (20),
-        GuiaEnvio Varchar (25),   
-        StaGuia varchar(15), 
-        GuiaRetorno Varchar (25),
-        StatusEntrega Varchar (25),
+        SoliComponente varchar (20), /*No esta en Excel*/
+        GuiaEnvio Varchar (25),   /*No esta en Excel*/
+        StaGuia varchar(15), /*No esta en Excel*/
+        GuiaRetorno Varchar (25),/*No esta en Excel*/
+        StatusEntrega Varchar (25), /*No esta en Excel*/
 		IDEstadosRepuBG int , 
         Ciudad Varchar (35), 
         IDCuentaBG int, 
@@ -132,8 +132,8 @@ create table EstadoLMS(
        TelClient Varchar (26),
        Calle Varchar (200),
        IDEstadoLMSBG int, 
-       IDTablaBG int, 
-       
+       IDTablaBG int,
+       AsigancionTec VARCHAR (51),
          foreign key(IDCoordinadorBG) references Coordinadores(IDCoordinador) on delete cascade on update cascade,
          foreign key(IDCategoriaBG) references Categoria(IDCategoria) on delete cascade on update cascade,
          foreign key(IDPagosBG) references Pagos(IDPagos) on delete cascade on update cascade,
@@ -199,13 +199,14 @@ insert into EstadosRepu (NombreEstado,IDZonEstaEs) values
 ("Yucatan",4),
 ("Zacatecas",1),
 ("CDMX",3),
-("Estado de Mexico",3);
+("Estado de Mexico",3),
+("-",3);
 
 insert into EstadoLMS(DesEstLMS) values 
 ("Advertencia de objetivo de servicio"),
 ("Dentro del Objetivo de servicio"),
 ("Objetivos de servicio incumplidos"),
-("");
+("-");
 
 insert into CorteMes(Mes) values 
 ("ENERO"),
@@ -226,7 +227,7 @@ insert into Cuenta (NombreCuenta)  Values
 ("PROSPERA"),
 ("FOVISSSTE COMPUTO"),
 ("SEDESOL"),
-("");
+("-");
 
 insert into SegPorClien (DescSegClient) values 
 ("-"),
@@ -235,7 +236,8 @@ insert into SegPorClien (DescSegClient) values
  insert into Categoria (Tipo) values 
  ("DIA A DIA"),
  ("BACKLOG"),
- ("RECUPERACION DE DOCUMENTACION ");
+ ("RECUPERACION DE DOCUMENTACION"),
+ ("-");
  
  insert into GrupoAsig (NombreGrup) values 
  ("Almacen"),
@@ -279,7 +281,7 @@ insert into SegPorClien (DescSegClient) values
  ("Soporte Veracruz"),
  ("Soporte Yucatan"),
  ("Soporte Zacatecas"),
- ("");
+ ("-");
  
  
 
@@ -310,17 +312,17 @@ insert into SegPorClien (DescSegClient) values
 ("stephanie.zarraga"),
 ("alexis.rivera"),
 ("abraham.sanchez"),
-("oscar.gonzalez");
+("oscar.gonzalez"),
+("-");
 
 insert into TypeTiket(TypeTikets)   values 
 ("Incidencia"),
 ("Jesus Antonio"),
-("");
+("-");
 
 insert into Pagos(DescPagos)   values 
 ("-"),
-("PAGADO"),
-("");
+("PAGADO");
 
 
 INSERT INTO StatusTiket (TipoStatus) values 
@@ -332,7 +334,8 @@ INSERT INTO StatusTiket (TipoStatus) values
 ("PENDIENTE"),
 ("ASIGNADO"),
 ("EN CURSO"),
-("ALMACEN");
+("ALMACEN"),
+("-");
 
 insert into Tabla (DesTabla) VALUES 
 ("RESOLUCION"),
@@ -356,17 +359,21 @@ insert into Tabla (DesTabla) VALUES
         select *from pagos;
         SELECT *FROM StatusTiket;
 		select *from Tabla;
-        
-	SELECT *from BaseGeneral;
-    select * from Categoria  ;
+		SELECT *from BaseGeneral;
+		select * from Categoria  ;
 select IDCategoria from Categoria where Tipo like "%BACLOG%";
 select  IDPagos from Pagos where DescPagos LIKE "%PA%" ;
 select * from Categoria where Tipo like "%BACKLOG%";
 select IDSeClien from SegPorClien where DescSegClient like "%S%";
 select IDUltMod from UltModificador where NombreMod like "%Bla%";
- SELECT IDStatusTiket FROM StatusTiket where TipoStatus like "%CERR%";
-   
+SELECT IDStatusTiket FROM StatusTiket where TipoStatus like "%CERR%";
+select IDEstadosRepu From EstadosRepu where NombreEstado like "%Mex%" ;
+select IDCuenta From Cuenta where NombreCuenta like "%pro%";
+select IDTypeTiket From TypeTiket where TypeTikets like "%inc%";
+SELECT IDGrupoAsig from GrupoAsig where NombreGrup like "%Soporte%";
+    select IDEstadoLMS From EstadoLMS where DesEstLMS like "%DENT%";
+select IDTabla from Tabla where DesTabla like "%Resol%";
 
-Select *from Coordinadores;
-
-
+	select IDZonEstaEs From EstadosRepu WHERE IDEstadosRepu =5;
+    
+    SELECT *from BaseGeneral;
