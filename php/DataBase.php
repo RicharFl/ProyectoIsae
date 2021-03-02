@@ -13,7 +13,7 @@ public function CrearQuery ($Query)
     //echo $Query;
     include '../php/Conexion.php';
     
-    $resultado1=mysqli_query($conexion,$Query);  
+    $resultado1= mysqli_query($conexion,$Query);  
     //var_dump ($resultado1);
     $fin=mysqli_fetch_array($resultado1);
     // var_dump ($fin);

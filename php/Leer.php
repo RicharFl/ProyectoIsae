@@ -27,11 +27,12 @@
 	$i=2;
 	$exito=1;
 	$error=1;
-
+	$time_sleep=1;
+	set_time_limit(300); 
 	for ($i =2 ; $i <= $numRows; $i ++)
 	{
 
-			//CATEGORIA
+		//CATEGORIA
 
 		$B=$objPHPExcel->getActiveSheet()->getCell('B'.$i)->getCalculatedValue();
 		if ($B==NULL) $B='-';
@@ -279,7 +280,7 @@ else {
 					 $AR='SIN ASIGNAR';
 					 
 			 $SQL="INSERT INTO BaseGeneral (IDCoordinadorBG, IDCategoriaBG, IDPagosBG, IDSeClienBG, IDCorteMesBG, IDIncidente, UltFechaModi, IDUltModBG, CL, IDStatusTiketBG, Comentarios, Detalles, SoliComponente, GuiaEnvio, StaGuia, GuiaRetorno, StatusEntrega, IDEstadosRepuBG, Ciudad, IDCuentaBG, Resumen, IDTypeTiketBG, NombreBG, ApellidoBG, IDGrupoAsigBG, Usuario, FecAtencion, FecSolucion, FecCierre, FecNotificacion, FecRespuesta, FecSoluRequerimiento, TelClient, Calle, IDEstadoLMSBG, IDTablaBG, AsigancionTec) VALUES ('$A','$B','$C','$D','$CorMen','$F','$G','$H','$I','$J','$K','$L','$M','$N','$O','$P','$Q','$R','$S','$T','$U','$V','$W','$X','$Y','$Z','$AA','$AB','$AC','$AD','$AE','$AF','$AG','$AH','$AI','$AJ','$AR')";
-			 echo "<br> $i" ;
+			
 				 
 		
 			
@@ -293,8 +294,13 @@ else {
 					echo "<br> iteracion --- $i  numero de Errores es:  $error ";
 					$error++; 
 				   }
-      
-
+      $time_sleep ++;
+	  if ($time_sleep==100)
+	  {
+		sleep(2);
+		$time_sleep=1;
+	  }
+	 
 
 	}
 

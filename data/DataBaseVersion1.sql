@@ -356,7 +356,7 @@ insert into Tabla (DesTabla) VALUES
 		SELECT *from GrupoAsig;
         select *from UltModificador;
         select *From TypeTiket;
-        select *from pagos;
+        select *from Pagos;
         SELECT *FROM StatusTiket;
 		select *from Tabla;
 		SELECT *from BaseGeneral;
@@ -377,3 +377,73 @@ select IDTabla from Tabla where DesTabla like "%Resol%";
 	select IDZonEstaEs From EstadosRepu WHERE IDEstadosRepu =5;
     
     SELECT *from BaseGeneral;
+    SELECT count(IDincidente) FROM BaseGeneral;
+ drop view if exists BaseCompleta;	
+	create view BaseCompleta as 
+    select  
+    Coordinadores.Nombre as "Coordinador",
+    Categoria.Tipo as "CATEGORIA",
+	Pagos.DescPagos as "PAGOS",
+    SegPorClien.DescSegClient as "SEGUIMIENTO POR EL CLIENTE",
+    CorteMes.Mes as "CORTE DEL MES",
+    BaseGeneral.IDIncidente as "INCIDENCIA",
+    BaseGeneral.UltFechaModi as "FECHA ULT. MODIF.",
+    UltModificador.NombreMod as "MODOFICADOR",
+    BaseGeneral.CL,
+    StatusTiket.TipoStatus,
+    Comentarios,
+    Detalles,
+    SoliComponente,
+    GuiaEnvio,
+    StaGuia,
+    GuiaRetorno,
+    StatusEntrega,
+    EstadosRepu.NombreEstado,
+    Ciudad,
+    Cuenta.NombreCuenta,
+    Resumen,
+    TypeTiket.TypeTikets,
+    NombreBG,
+    ApellidoBG,
+    GrupoAsig.NombreGrup,
+    Usuario,
+    FecAtencion,
+    FecSolucion,
+    FecCierre,
+    FecNotificacion,
+    FecRespuesta,
+    FecSoluRequerimiento,
+    TelClient,
+    Calle,
+    EstadoLMS.DesEstLMS,
+    Tabla.DesTabla,
+    AsigancionTec
+
+    from BaseGeneral inner join Coordinadores 
+						on BaseGeneral.IDCoordinadorBG =Coordinadores.IDCoordinador
+                     inner join  Categoria
+						on BaseGeneral.IDCategoriaBG=Categoria.IDCategoria
+					 inner join  Pagos
+						on BaseGeneral.IDPagosBG=Pagos.IDPagos
+					 inner join SegPorClien
+						on  BaseGeneral.IDSeClienBG=SegPorClien.IDSeClien
+					 inner join CorteMes
+						on BaseGeneral.IDCorteMesBG=CorteMes.IDCorteMes
+					 inner join UltModificador
+						on BaseGeneral.IDUltModBG=UltModificador.IDUltMod
+					 inner join StatusTiket
+						on BaseGeneral.IDStatusTiketBG=StatusTiket.IDStatusTiket
+					 inner join EstadosRepu
+                       on BaseGeneral.IDEstadosRepuBG=EstadosRepu.IDEstadosRepu
+					 inner join Cuenta
+                       on BaseGeneral.IDCuentaBG=Cuenta.IDCuenta
+					 inner join TypeTiket
+					   on BaseGeneral.IDTypeTiketBG=TypeTiket.IDTypeTiket
+					 inner join GrupoAsig
+					   on BaseGeneral.IDGrupoAsigBG=GrupoAsig.IDGrupoAsig
+					 inner join EstadoLMS
+					   on  BaseGeneral.IDEstadoLMSBG= EstadoLMS.IDEstadoLMS
+					 inner join Tabla
+					   on  BaseGeneral.IDTablaBG= Tabla.IDTabla;
+   
+   

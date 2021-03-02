@@ -3,24 +3,26 @@
 include 'DataBase.php';
 include 'Conexion.php';
 
-$nameCoord='JU';
+$nameCoord='AL';
 //echo $nameCoord;
 
-$QUERY="SELECT Nombre FROM Coordinadores
+$QUERY="SELECT * FROM Coordinadores
  where Coordinadores.Nombre LIKE '%".$nameCoord."%'";
  
- /*
- $resultado1=(mysqli_query($conexion,$QUERY));
- $fin=mysqli_fetch_array($resultado1);
- echo $fin [0];
  
-ECHO $QUERY;*/
-
+ $resultado1=(mysqli_query($conexion,$QUERY));
+ var_dump ($resultado1);
+ echo "<br><br>";
+ $fin=mysqli_fetch_array($resultado1);
+ var_dump ($fin);
+ 
+//ECHO $QUERY;
+/*
 $NameCoordinador= new DataBase($QUERY);
 $nameres=$NameCoordinador-> CrearQuery ($QUERY);
 echo $nameres;
 
-
+*/
 /*
 
 $total = mysqli_num_rows(mysqli_query($conexion,"SELECT Nombre FROM Coordinadores

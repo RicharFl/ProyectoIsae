@@ -23,7 +23,8 @@ echo $total;
 
 
 
-$sql="SELECT Nombre FROM Coordinadores where Coordinadores.Nombre LIKE '%".$nameCoord."%'";
+$sql="select IDCategoria from Categoria where Tipo like "%BACLOG%";
+select  IDPagos from Pagos where DescPagos LIKE "%PA%" ;";
  $resultado1=(mysqli_query($conexion,$sql));
 
  $fin=mysqli_fetch_array($resultado1);
