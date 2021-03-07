@@ -14,8 +14,9 @@ var_dump ($Numevo);
 $mes=date("m");
 $mes=(int ) $mes;
 var_dump ($mes);
-/*
 
+/*
+hola como estan. 
 
 $total = mysqli_num_rows(mysqli_query($conexion,"SELECT Nombre FROM Coordinadores
  where Coordinadores.Nombre LIKE '%".$nameCoord."%'")); //Comprobar si ya está registrado el usuario
@@ -53,8 +54,4 @@ echo $fin ['Nombre'] ;*/
                 
             }
         
-   
-    
-  */  
-
-?>
+   
