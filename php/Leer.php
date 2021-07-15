@@ -294,7 +294,7 @@ else {
 					echo "<br> iteracion --- $i  numero de Errores es:  $error ";
 					$error++; 
 				   }
-      $time_sleep ++;
+      $time_sleep =$time_sleep +2;
 	  if ($time_sleep==100)
 	  {
 		sleep(2);
